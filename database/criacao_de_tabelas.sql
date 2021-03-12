@@ -2,55 +2,72 @@ CREATE TABLE tb_proprietario (
     id_proprietario SERIAL PRIMARY KEY,
     nm_proprietario VARCHAR(50) NOT NULL,
     cpf_proprietario VARCHAR(30) NOT NULL,
-    rg_proprietario VARCHAR(30),
-    data_nascimento DATE,
-    estado_civil VARCHAR(30),
-    profissao VARCHAR(30);
+    rg_proprietario VARCHAR(30) NOT NULL,
+    data_nascimento DATE NOT NULL,
+    estado_civil VARCHAR(30) NOT NULL,
+    profissao VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE tb_imovel(
-                    id_imovel SERIAL PRIMARY KEY,
-                    tipo_imovel VARCHAR(255) NOT NULL,
-                    endereco_imovel VARCHAR(255) NOT NULL,
-                    cep VARCHAR(30) NOT NULL,
-                    UF VARCHAR(2) NOT NULL,
-                    id_proprietario INTEGER UNIQUE,
-                    nm_proprietario VARCHAR(50) UNIQUE,
-                    FOREIGN KEY (id_proprietario) REFERENCES tb_proprietario (id_proprietario)
-                    ON UPDATE CASCADE ON DELETE CASCADE,
-                    FOREIGN KEY (nm_proprietario) REFERENCES tb_proprietario (nm_proprietario)
-                    ON UPDATE CASCADE ON DELETE CASCADE,
-                    adquirido_em DATE,
-                    valor_imovel INT,
-                    status_imovel BOOLEAN
+    id_imovel SERIAL PRIMARY KEY,
+    tipo_imovel VARCHAR(255) NOT NULL,
+    endereco VARCHAR(255) NOT NULL,
+    complemento VARCHAR(50  ) NOT NULL,
+    cep VARCHAR(30) NOT NULL,
+    uf VARCHAR(2) NOT NULL,
+    id_proprietario INTEGER,
+    FOREIGN KEY (id_proprietario) REFERENCES tb_proprietario (id_proprietario)
+    ON UPDATE CASCADE ON DELETE CASCADE,
+    adquirido_em DATE NOT NULL,
+    valor_imovel INTEGER
+);
+
+CREATE TABLE tb_gastos_imovel(
+    id_gasto SERIAL PRIMARY KEY,
+    id_imovel INTEGER NOT NULL,
+    FOREIGN KEY (id_imovel) REFERENCES tb_imovel( id_imovel)
+    ON UPDATE CASCADE ON DELETE CASCADE,
+    tipo_gasto VARCHAR(50) NOT NULL,
+    valor_gasto INTEGER NOT NULL
 );
 
 CREATE TABLE tb_cliente (
     id_cliente SERIAL PRIMARY KEY,
     nm_cliente VARCHAR(50) NOT NULL,
     cpf_cliente VARCHAR(30) NOT NULL,
-    rg_cliente VARCHAR(30),
-    data_nascimento DATE,
-    estado_civil VARCHAR(30),
-    profissao VARCHAR(30),
-    endereco VARCHAR(50),
-    uf VARCHAR(2)
+    rg_cliente VARCHAR(30)NOT NULL,
+    data_nascimento DATE NOT NULL,
+    estado_civil VARCHAR(30)NOT NULL,
+    profissao VARCHAR(30)NOT NULL
 );
 
-CREATE TABLE tb_compra (
-    id_compra SERIAL PRIMARY KEY,
-    id_imovel INTEGER UNIQUE,
-    nm_proprietario VARCHAR(50) UNIQUE,
-    id_cliente INTEGER UNIQUE,
-    nm_cliente VARCHAR(50) UNIQUE,
-    FOREIGN KEY (id_imovel) REFERENCES tb_imovel( id_imovel)
+CREATE TABLE tb_endereco_cliente (
+    id_endereco SERIAL PRIMARY KEY,
+    id_cliente INTEGER,
+    FOREIGN KEY (id_cliente) REFERENCES tb_cliente (id_cliente)
     ON UPDATE CASCADE ON DELETE CASCADE,
-    FOREIGN KEY (nm_proprietario) REFERENCES tb_proprietario (nm_proprietario)
+    endereco VARCHAR(50) NOT NULL,
+    complemento VARCHAR(30),
+    cep VARCHAR(30) NOT NULL,
+    uf VARCHAR(2) NOT NULL
+);
+
+CREATE TABLE tb_banco(
+    id_banco SERIAL PRIMARY KEY,
+    nm_banco VARCHAR(50)
+);
+
+CREATE TABLE tb_compra(
+    id_compra SERIAL PRIMARY KEY,
+    id_imovel INTEGER,
+    id_cliente INTEGER,
+    FOREIGN KEY (id_imovel) REFERENCES tb_imovel (id_imovel)
     ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (id_cliente) REFERENCES tb_cliente(id_cliente)
     ON UPDATE CASCADE ON DELETE CASCADE,
-    FOREIGN KEY (nm_cliente) REFERENCES tb_cliente(nm_cliente)
+    tipo_pagamento VARCHAR(20),
+    id_banco INTEGER UNIQUE,
+    FOREIGN KEY (id_banco) REFERENCES tb_banco (id_banco)
     ON UPDATE CASCADE ON DELETE CASCADE,
-    valor_imovel INTEGER,
-    tipo_de_compra VARCHAR(20)
+    valor_pagamento INTEGER
 );
