@@ -32,14 +32,16 @@ model_cliente = appi.model('Cliente Model', {'nm_cliente': fields.String(require
                                              'profissao': fields.String(required=True,
                                                                         description="Profissão do Cliente")})
 model_put_cliente = appi.model('Cliente Model', {'nm_cliente': fields.String(description="Nome do Cliente"),
-                                             'cpf_cliente': fields.String(description="CPF do Cliente"),
-                                             'rg_cliente': fields.String(description="RG do Cliente"),
-                                             'endereco': fields.String(description="Endereço do Cliente"),
-                                             'cep': fields.String(description="CEP do endereço do Cliente"),
-                                             'uf': fields.String(description="UF do endereço do Cliente"),
-                                             'data_nascimento': fields.Date(description="Data de nascimento do Cliente"),
-                                             'estado_civil': fields.String(description="Estado Civil atual do Cliente"),
-                                             'profissao': fields.String(description="Profissão do Cliente")})
+                                                 'cpf_cliente': fields.String(description="CPF do Cliente"),
+                                                 'rg_cliente': fields.String(description="RG do Cliente"),
+                                                 'endereco': fields.String(description="Endereço do Cliente"),
+                                                 'cep': fields.String(description="CEP do endereço do Cliente"),
+                                                 'uf': fields.String(description="UF do endereço do Cliente"),
+                                                 'data_nascimento': fields.Date(
+                                                     description="Data de nascimento do Cliente"),
+                                                 'estado_civil': fields.String(
+                                                     description="Estado Civil atual do Cliente"),
+                                                 'profissao': fields.String(description="Profissão do Cliente")})
 
 nms_proprietario = appi.namespace('proprietarios/v1', description="Operações com proprietarios")
 model_proprietario = appi.model('Proprietario Model', {'nm_proprietario': fields.String(required=True,
@@ -55,13 +57,14 @@ model_proprietario = appi.model('Proprietario Model', {'nm_proprietario': fields
                                                        'profissao': fields.String(required=True,
                                                                                   description="Profissão do Proprietario"),
                                                        })
-model_put_proprietario = appi.model('Proprietario Model', {'nm_proprietario': fields.String(description="Nome do Proprietario"),
-                                                       'cpf_proprietario': fields.String(description="CPF do Proprietario"),
-                                                       'rg_proprietario': fields.String(description="RG do Proprietario"),
-                                                       'data_nascimento': fields.String(description="Data de Nascimento do Proprietario"),
-                                                       'estado_civil': fields.String(description="Estado Civil do Proprietario"),
-                                                       'profissao': fields.String(description="Profissão do Proprietario")
-                                                       })
+model_put_proprietario = appi.model('Proprietario Model',
+                                    {'nm_proprietario': fields.String(description="Nome do Proprietario"),
+                                     'cpf_proprietario': fields.String(description="CPF do Proprietario"),
+                                     'rg_proprietario': fields.String(description="RG do Proprietario"),
+                                     'data_nascimento': fields.String(description="Data de Nascimento do Proprietario"),
+                                     'estado_civil': fields.String(description="Estado Civil do Proprietario"),
+                                     'profissao': fields.String(description="Profissão do Proprietario")
+                                     })
 
 nms_imovel = appi.namespace('imoveis/v1', description="Operações com imoveis")
 model_imovel = appi.model('Imovel Model', {'tipo_imovel': fields.String(required=True,
@@ -81,13 +84,16 @@ model_imovel = appi.model('Imovel Model', {'tipo_imovel': fields.String(required
                                            'valor_imovel': fields.String(required=True,
                                                                          description="Valor de Venda do Imovel")})
 model_put_imovel = appi.model('Imovel Model', {'tipo_imovel': fields.String(description="Tipo do Imovel"),
-                                           'endereco': fields.String(description="Endereço do Imovel"),
-                                           'complemento': fields.String(description="Complemento do Endereço do Imovel"),
-                                           'cep': fields.String(description="Cep da localizaçao do Imovel"),
-                                           'uf': fields.String(description="UF do Imovel"),
-                                           'id_proprietario': fields.Integer(description="ID do Proprietario do Imovel"),
-                                           'adquirido_em': fields.String(description="Quando o imovel foi adquirido"),
-                                           'valor_imovel': fields.String(description="Valor de Venda do Imovel")})
+                                               'endereco': fields.String(description="Endereço do Imovel"),
+                                               'complemento': fields.String(
+                                                   description="Complemento do Endereço do Imovel"),
+                                               'cep': fields.String(description="Cep da localizaçao do Imovel"),
+                                               'uf': fields.String(description="UF do Imovel"),
+                                               'id_proprietario': fields.Integer(
+                                                   description="ID do Proprietario do Imovel"),
+                                               'adquirido_em': fields.String(
+                                                   description="Quando o imovel foi adquirido"),
+                                               'valor_imovel': fields.String(description="Valor de Venda do Imovel")})
 
 nms_gasto_imovel = appi.namespace('imovel/gasto/v1', description="Operações de registro de despesas de um Imovel")
 model_gasto_imovel = appi.model('Despesa Imovel Model', {'id_imovel': fields.Integer(required=True,
@@ -98,9 +104,11 @@ model_gasto_imovel = appi.model('Despesa Imovel Model', {'id_imovel': fields.Int
                                                                                        description="Valor gasto com as despesas do Imovel"),
                                                          })
 model_put_gasto_imovel = appi.model('Despesa Imovel Model', {'id_imovel': fields.Integer(description="Id do Imovel"),
-                                                         'tipo_gasto': fields.Integer(description="Tipo de gasto/despesa"),
-                                                         'valor_gasto': fields.Integer(description="Valor gasto com as despesas do Imovel"),
-                                                         })
+                                                             'tipo_gasto': fields.Integer(
+                                                                 description="Tipo de gasto/despesa"),
+                                                             'valor_gasto': fields.Integer(
+                                                                 description="Valor gasto com as despesas do Imovel"),
+                                                             })
 
 nms_compra = appi.namespace('compras/v1', description="Operações de compra de imoveis")
 model_compra = appi.model('Compra Model', {'id_imovel': fields.Integer(required=True,
@@ -114,19 +122,20 @@ model_compra = appi.model('Compra Model', {'id_imovel': fields.Integer(required=
                                            'valor_pagamento': fields.Integer(required=True,
                                                                              description="ID do Imovel que esta sendo comprado"),
                                            })
-model_put_compra = appi.model('Compra Model', {'id_imovel': fields.Integer(description="ID do Imovel que esta sendo comprado"),
-                                           'id_cliente': fields.Integer(description="ID do Imovel que esta sendo comprado"),
-                                           'tipo_pagamento': fields.String(description="ID do Imovel que esta sendo comprado"),
-                                           'id_banco': fields.Integer(description="ID do Imovel que esta sendo comprado"),
-                                           'valor_pagamento': fields.Integer(description="ID do Imovel que esta sendo comprado"),
-                                           })
+model_put_compra = appi.model('Compra Model',
+                              {'id_imovel': fields.Integer(description="ID do Imovel que esta sendo comprado"),
+                               'id_cliente': fields.Integer(description="ID do Imovel que esta sendo comprado"),
+                               'tipo_pagamento': fields.String(description="ID do Imovel que esta sendo comprado"),
+                               'id_banco': fields.Integer(description="ID do Imovel que esta sendo comprado"),
+                               'valor_pagamento': fields.Integer(description="ID do Imovel que esta sendo comprado"),
+                               })
 
 nms_banco = appi.namespace('banco/v1', description="Operações com banco")
 model_banco = appi.model('Banco Model', {'nm_banco': fields.String(required=True,
                                                                    description="Nome do Banco")})
 
 
-# criação dos OBJETOS (sao os mesmos do banco de dados)
+# criação das tabelas/OBJETOS
 class tb_proprietario(db.Model):
     id_proprietario = db.Column(db.Integer, primary_key=True, autoincrement=True, unique=True)
     nm_proprietario = db.Column(db.String)
@@ -225,6 +234,10 @@ class tb_compra(db.Model):
         self.valor_pagamento = valor_pagamento
 
 
+# CRIAR TABELAS NO BANCO
+db.create_all()
+
+
 # METHOD'S POST, GET, PUT E DELETE - Cliente
 @nms_cliente.route('/clientes', methods=['GET', 'POST'])
 class MainClass(Resource):
@@ -275,6 +288,7 @@ class MainClass(Resource):
         except Exception as exception:
             nms_proprietario.abort(400, exception.__doc__, status="Could not retrieve information", statusCode="400")
 
+
 @nms_cliente.route('/clientes/<int:id_cliente>')
 class MainClass(Resource):
     def delete(self, id_cliente):
@@ -287,6 +301,7 @@ class MainClass(Resource):
             nms_proprietario.abort(500, error.__doc__, status="Could not retrieve information", statusCode="500")
         except Exception as exception:
             nms_proprietario.abort(400, exception.__doc__, status="Could not retrieve information", statusCode="400")
+
 
 @nms_cliente.route('/clientes/<int:id>')
 class MainClass(Resource):
@@ -355,10 +370,11 @@ class MainClass(Resource):
         except Exception as exception:
             nms_proprietario.abort(400, exception.__doc__, status="Could not retrieve information", statusCode="400")
 
+
 @nms_banco.route('/banco/<int:id_banco>')
 class MainClass(Resource):
-    def delete(self,  id_banco):
-        banco_deletado = tb_banco.query.filter(tb_banco.id_banco==id_banco).delete()
+    def delete(self, id_banco):
+        banco_deletado = tb_banco.query.filter(tb_banco.id_banco == id_banco).delete()
         db.session.commit()
         return jsonify(banco_deletado)
 
@@ -408,6 +424,7 @@ class MainClass(Resource):
         except Exception as exception:
             nms_proprietario.abort(400, exception.__doc__, status="Could not retrieve information", statusCode="400")
 
+
 @nms_proprietario.route("/proprietario/<int:id_proprietario>")
 class MainClass(Resource):
     def delete(self, id_proprietario):
@@ -420,6 +437,7 @@ class MainClass(Resource):
             nms_proprietario.abort(500, error.__doc__, status="Could not retrieve information", statusCode="500")
         except Exception as exception:
             nms_proprietario.abort(400, exception.__doc__, status="Could not retrieve information", statusCode="400")
+
 
 @nms_proprietario.route("/proprietario/<int:id>")
 class MainClass(Resource):
@@ -491,12 +509,14 @@ class MainClass(Resource):
         db.session.commit()
         return jsonify(imovelData)
 
+
 @nms_imovel.route('/imoveis/<int:id_imovel>')
 class MainClass(Resource):
     def delete(self, id_imovel):
         imovel_deletado = tb_imovel.query.filter(tb_imovel.id_imovel == id_imovel).delete()
         db.session.commit()
         return jsonify(imovel_deletado)
+
 
 @nms_imovel.route('/imoveis/<int:id>')
 class MainClass(Resource):
@@ -529,6 +549,7 @@ class MainClass(Resource):
         except Exception as exception:
             nms_proprietario.abort(400, exception.__doc__, status="Could not retrieve information", statusCode="400")
 
+
 # METHOD'S POST, GET E DELETE - Gastos Imovel
 @nms_gasto_imovel.route('/gastos_imovel')
 class MainClass(Resource):
@@ -559,6 +580,7 @@ class MainClass(Resource):
         db.session.commit()
         return jsonify(gastoData)
 
+
 @nms_gasto_imovel.route('/gastos_imovel/<int:id>')
 class MainClass(Resource):
     @appi.expect(model_put_gasto_imovel)
@@ -579,6 +601,7 @@ class MainClass(Resource):
             nms_proprietario.abort(500, error.__doc__, status="Could not retrieve information", statusCode="500")
         except Exception as exception:
             nms_proprietario.abort(400, exception.__doc__, status="Could not retrieve information", statusCode="400")
+
 
 # METHOD'S POST , PUT e GET - Compra
 @nms_compra.route('/compra')
@@ -615,6 +638,7 @@ class MainClass(Resource):
         db.session.add(compra)
         db.session.commit()
         return jsonify(compra_data)
+
 
 @nms_compra.route('/compra/<int:id>')
 class MainClass(Resource):
