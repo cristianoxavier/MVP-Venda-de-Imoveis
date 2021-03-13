@@ -36,20 +36,12 @@ CREATE TABLE tb_cliente (
     nm_cliente VARCHAR(50) NOT NULL,
     cpf_cliente VARCHAR(30) NOT NULL,
     rg_cliente VARCHAR(30)NOT NULL,
+    endereco VARCHAR(40) NOT NULL,
+    cep VARCHAR(10) NOT NULL,
+    uf VARCHAR(2) NOT NULL,
     data_nascimento DATE NOT NULL,
     estado_civil VARCHAR(30)NOT NULL,
     profissao VARCHAR(30)NOT NULL
-);
-
-CREATE TABLE tb_endereco_cliente (
-    id_endereco SERIAL PRIMARY KEY,
-    id_cliente INTEGER,
-    FOREIGN KEY (id_cliente) REFERENCES tb_cliente (id_cliente)
-    ON UPDATE CASCADE ON DELETE CASCADE,
-    endereco VARCHAR(50) NOT NULL,
-    complemento VARCHAR(30),
-    cep VARCHAR(30) NOT NULL,
-    uf VARCHAR(2) NOT NULL
 );
 
 CREATE TABLE tb_banco(
