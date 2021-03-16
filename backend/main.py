@@ -2,10 +2,13 @@ from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_restplus import Api, Resource, fields
 from sqlalchemy import ForeignKey
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:123@localhost:5432/compra_imoveis'
 app.debug = True
+CORS(app)
+cross_origin(app = app, methods=['GET', 'POST', 'PUT', 'DELETE'])
 appi = Api(app=app, version="1.0", title="Venda de Imoveis",
            description="Sistema MVP para compra e venda de imoveis")
 db = SQLAlchemy(app)
@@ -31,6 +34,8 @@ model_cliente = appi.model('Cliente Model', {'nm_cliente': fields.String(require
                                                                            description="Estado Civil atual do Cliente"),
                                              'profissao': fields.String(required=True,
                                                                         description="Profissão do Cliente")})
+model_get_cliente = appi.model('Cliente Model', {'Id': fields.Integer(description="Id do cliente")})
+
 model_put_cliente = appi.model('Cliente Model', {'nm_cliente': fields.String(description="Nome do Cliente"),
                                                  'cpf_cliente': fields.String(description="CPF do Cliente"),
                                                  'rg_cliente': fields.String(description="RG do Cliente"),
@@ -239,7 +244,7 @@ db.create_all()
 
 
 # METHOD'S POST, GET, PUT E DELETE - Cliente
-@nms_cliente.route('/clientes', methods=['GET', 'POST'])
+@nms_cliente.route('/clientes')
 class ClienteClass(Resource):
 
     @appi.doc(responses={200: 'OK', 400: 'Invalid Argument', 500: 'Mapping Key Error'})
@@ -291,6 +296,29 @@ class ClienteClass(Resource):
 
 @nms_cliente.route('/clientes/<int:id_cliente>')
 class ClienteClass(Resource):
+    def get(self, id_cliente):
+        try:
+            clientes = tb_cliente.query.filter(tb_cliente.id_cliente == id_cliente)
+            saida = []
+            for cliente in clientes:
+                dados_cliente = {}
+                dados_cliente['id_cliente'] = cliente.id_cliente
+                dados_cliente['nm_cliente'] = cliente.nm_cliente
+                dados_cliente['cpf_cliente'] = cliente.cpf_cliente
+                dados_cliente['rg_cliente'] = cliente.rg_cliente
+                dados_cliente['endereco'] = cliente.endereco
+                dados_cliente['cep'] = cliente.cep
+                dados_cliente['uf'] = cliente.uf
+                dados_cliente['data_nascimento'] = cliente.data_nascimento
+                dados_cliente['estado_civil'] = cliente.estado_civil
+                dados_cliente['profissao'] = cliente.profissao
+                saida.append(dados_cliente)
+            return jsonify(saida)
+        except KeyError as error:
+            nms_proprietario.abort(500, error.__doc__, status="Could not retrieve information", statusCode="500")
+        except Exception as exception:
+            nms_proprietario.abort(400, exception.__doc__, status="Could not retrieve information", statusCode="400")
+
     def delete(self, id_cliente):
         try:
             cliente_deletado = tb_cliente.query.filter(
@@ -340,6 +368,8 @@ class ClienteClass(Resource):
 # METHOD'S POST, GET E DELETE - Banco
 @nms_banco.route('/banco')
 class BancoClass(Resource):
+
+    @appi.expect(model_get_cliente)
     def get(self):
         try:
             bancos = tb_banco.query.all()
