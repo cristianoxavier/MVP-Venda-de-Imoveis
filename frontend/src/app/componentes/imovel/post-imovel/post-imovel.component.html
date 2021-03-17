@@ -1,0 +1,72 @@
+<head>
+  <script src="rw-money-mask.min.js"></script>
+</head>
+
+<body>
+
+  <div>
+    <div class="title text-center">
+    <h2 class="">Adicionar Novo Imovel</h2>
+  </div>
+    <form class="container needs-validation ">
+
+
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>Tipo do Imovel: </label>
+          <select class="form-control" type="text" #tipo_imovel name="tipo_imovel" id="tipo_imovel" value="">
+            <option *ngFor="let tipo of tipos_imoveis" [value]="tipo">{{tipo}}
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label>Endereço: </label>
+          <input class="form-control" type="text" #endereco name="endereco" id="endereco" value="">
+        </div>
+        <div class="form-group col-md-6">
+          <label>Complemento: </label>
+          <input class="form-control" type="text" #complemento name="complemento" id="complemento" value="">
+        </div>
+      </div>
+
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label class="col-sm-2 control-label">CEP: </label>
+          <input class="form-control" type="text" #cep name="cep" id="cep" value="">
+        </div>
+        <div class="form-group col-md-6">
+          <label >UF: </label>
+          <select class="form-control" type="text" #uf name="uf" id="uf" value="">
+            <option *ngFor="let uf of ufs" [value]="uf">{{uf}}</option>
+          </select>
+        </div>
+      </div>
+
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label class="">ID do Proprietario: </label>
+          <input class="form-control" type="text" #id_proprietario name="id_proprietario" id="id_proprietario" value="">
+        </div>
+        <div class="form-group col-md-6">
+          <label class="">Data de Aquisição: </label>
+          <input class="form-control" type="date" #adquirido_em name="adquirido_em" id="adquirido_em" value="">
+        </div>
+        <div class="form-group col-md-6">
+          <label class="">Valor Imovel: </label>
+          <input class="form-control" type="text" #valor_imovel name="valor_imovel" id="valor_imovel" value="">
+        </div>
+      </div>
+
+      <div class="btn-lg btn-block">
+        <div>
+          <input routerLink="/getallimoveis" class="btn btn-success btn-lg btn-block" type="button" (click)="addNewImovel(tipo_imovel.value, endereco.value, complemento.value, cep.value, uf.value, id_proprietario.value, adquirido_em.value, valor_imovel.value)" value="Inserir">
+        </div>
+      </div>
+    </form>
+
+
+  </div>
+
+</body>

@@ -1,0 +1,36 @@
+<div class="container text-center">
+  <h2>Imoveis Cadastrados</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Tipo Imovel</th>
+        <th scope="col">Endereço</th>
+        <th scope="col">Complemento</th>
+        <th scope="col">CEP</th>
+        <th scope="col">UF</th>
+        <th scope="col">Id Proprietario</th>
+        <th scope="col">Data de Aquisição</th>
+        <th scope="col">Valor</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let imovel of imoveis">
+      <tr>
+        <td>{{imovel.id_imovel}}</td>
+        <td>{{imovel.tipo_imovel}}</td>
+        <td>{{imovel.endereco}}</td>
+        <td>{{imovel.complemento}}</td>
+        <td>{{imovel.cep}}</td>
+        <td>{{imovel.uf}}</td>
+        <td>{{imovel.id_proprietario }}</td>
+        <td>{{imovel.adquirido_em}}</td>
+        <td>{{imovel.valor_imovel}}</td>
+        <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteThisImovel(imovel.id_imovel)">Deletar</button>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-primary" routerLink="/addimovel" type="submit">Novo Imovel</button>
+
+
+</div>

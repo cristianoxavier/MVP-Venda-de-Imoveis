@@ -1,0 +1,52 @@
+<div>
+  <div class="title text-center">
+  <h2 class="">Adicionar Proprietario</h2>
+</div>
+  <form class="container">
+
+
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Nome: </label>
+        <input class="form-control" type="text" #nm_proprietario name="nm_proprietario" id="nm_proprietario" value="">
+      </div>
+      <div class="form-group col-md-6">
+        <label>CPF: </label>
+        <input class="form-control" type="text" #cpf_proprietario name="cpf_proprietario" id="cpf_proprietario" value="">
+      </div>
+    </div>
+
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="col-sm-2 control-label">RG: </label>
+        <input class="form-control" type="text" #rg_proprietario name="rg_proprietario" id="rg_proprietario" value="">
+      </div>
+      <div class="form-group col-md-6">
+        <label >Data de Nascimento: </label>
+        <input class="form-control" type="date" #data_nascimento name="data_nascimento" id="data_nascimento" value="">
+      </div>
+    </div>
+
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="">Estado Civil: </label>
+        <input class="form-control" type="text" #estado_civil name="estado_civil" id="estado_civil" value="">
+      </div>
+      <div class="form-group col-md-6">
+        <label class="">Profissão: </label>
+        <input class="form-control" type="text" #profissao name="profissao" id="profissao" value="">
+      </div>
+    </div>
+
+    <div class="btn-lg btn-block">
+      <div>
+        <input routerLink="/getallproprietarios" class="btn btn-success btn-lg btn-block" type="button" (click)="addNewProprietario(nm_proprietario.value, cpf_proprietario.value, rg_proprietario.value, data_nascimento.value, estado_civil.value, profissao.value)" value="Inserir">
+      </div>
+    </div>
+  </form>
+
+
+</div>

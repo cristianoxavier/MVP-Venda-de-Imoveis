@@ -9,18 +9,26 @@ import { ApiService } from '../../../api.service';
 })
 export class GetClienteComponent implements OnInit {
   cliente: any;
+  clientes;
 
   constructor(private apiService: ApiService, private ActivatedRoute: ActivatedRoute) {
-    this.ActivatedRoute.queryParams.subscribe(params => {
+    /*this.ActivatedRoute.queryParams.subscribe(params => {
       this.getClienteId(Number(params['id_cliente']))
-    })
+    })*/
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
-  getClienteId(id_cliente:number){
-    this.apiService.getClienteId(id_cliente).subscribe(data =>{ this.cliente = data[id_cliente]; }, error => { console.log("Error", error) });
+  getClienteId(id_cliente:number) {
+
+    console.log(id_cliente);
+    this.apiService.getClienteId(id_cliente).subscribe({
+      next: (cliente) => {
+        this.cliente = cliente[id_cliente];
+    },
+      error: (error) => { console.log("Error", error) }
+    });
   }
 
 

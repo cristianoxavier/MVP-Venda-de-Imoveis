@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../../api.service';
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-get-all-clientes',

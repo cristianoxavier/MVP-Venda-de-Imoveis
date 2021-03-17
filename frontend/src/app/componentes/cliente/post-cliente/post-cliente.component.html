@@ -35,7 +35,9 @@
       </div>
       <div class="form-group col-md-6">
         <label >UF: </label>
-        <input class="form-control" type="text" #uf name="uf" id="uf" value="">
+        <select class="form-control" type="text" #uf name="uf" id="uf" value="">
+          <option *ngFor="let uf of ufs" [value]="uf">{{uf}}</option>
+        </select>
       </div>
     </div>
 

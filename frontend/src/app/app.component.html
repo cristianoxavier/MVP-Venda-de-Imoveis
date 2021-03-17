@@ -9,12 +9,25 @@
     <ul class="navbar-nav mr-auto">
       <li class="row">
         <div class="col">
-          <div ngbDropdown class="d-inline-block">
+          <div ngbDropdown class="d-inline-block" style="padding-right: 10px;">
             <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Clientes</button>
             <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
               <button ngbDropdownItem routerLink="/getallclientes">Todos Clientes</button>
               <button ngbDropdownItem routerLink="addcliente">Adicionar Cliente</button>
-              <button ngbDropdownItem routerLink="getclienteid">Visualizar Cliente</button>
+            </div>
+          </div>
+          <div ngbDropdown class="d-inline-block" style="padding-right: 10px;">
+            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Proprietarios</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button ngbDropdownItem routerLink="/getallproprietarios">Todos Proprietarios</button>
+              <button ngbDropdownItem routerLink="addproprietario">Adicionar Proprietario</button>
+            </div>
+          </div>
+          <div ngbDropdown class="d-inline-block" style="padding-right: 10px;">
+            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Imoveis</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button ngbDropdownItem routerLink="/getallimoveis">Todos Imoveis</button>
+              <button ngbDropdownItem routerLink="addimovel">Adicionar Imovel</button>
             </div>
           </div>
         </div>

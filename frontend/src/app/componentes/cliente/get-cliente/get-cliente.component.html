@@ -8,17 +8,16 @@
       <div class="">
         <div class="">
           <label style="padding-right: 10px;">Id:</label>
-            <input class="" type="number" #cliente name="nm_cliente" id="nm_cliente" value="">
-            <button (click)="getClienteId(cliente.value)" class="btn btn-info ">Buscar</button>
+            <input type="number" #cliente name="id_cliente" id="nm_cliente" value="" >
+            <button type="button" (click)="getClienteId(cliente.value)" class="btn btn-info ">Buscar</button>
         </div>
       </div>
     </form>
   </div>
 
-  <table class="table">
+  <table class="table container">
     <thead>
       <tr>
-        <th scope="col">ID</th>
         <th scope="col">Nome</th>
         <th scope="col">CPF</th>
         <th scope="col">RG</th>
@@ -31,9 +30,8 @@
         <th scope="col"></th>
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngFor="let cliente of clientes">
       <tr>
-        <td>{{cliente.id_cliente}}</td>
         <td>{{cliente.nm_cliente}}</td>
         <td>{{cliente.cpf_cliente}}</td>
         <td>{{cliente.rg_cliente}}</td>

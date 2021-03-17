@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -15,23 +14,25 @@ export class ApiService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
-
+  /*ROTAS CLIENTE*/
   public getAllClientes(): Observable<any>{
-    return this.httpClient.get(this.endpoint + '/clientes/v1/clientes');
+    return this.httpClient.get(this.endpoint + '/mvp/clientes');
   }
 
   public getClienteId(id_cliente: number): Observable<any>{
-    return this.httpClient.get(this.endpoint + `/clientes/v1/clientes/` + id_cliente)
+    let url = this.endpoint + `/mvp/clientes/${id_cliente}`
+    console.log(url)
+    return this.httpClient.get(url)
+
   }
 
   public postCliente(cliente:any){
-    return this.httpClient.post(this.endpoint + '/clientes/v1/clientes', cliente);
+    return this.httpClient.post(this.endpoint + '/mvp/clientes', cliente);
   }
 
   public deleteCliente(id_cliente:number) {
-    return this.httpClient.delete(this.endpoint + `/clientes/v1/clientes/` + id_cliente)
+    return this.httpClient.delete(this.endpoint + `/mvp/clientes/` + id_cliente)
   }
-
 
 }
 
