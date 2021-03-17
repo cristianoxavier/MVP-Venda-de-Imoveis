@@ -41,3 +41,11 @@ Um projeto MVP realizado como avaliaçao do Campinas Tech Talents da trilha de P
   <li>Melhorar o codigo em si, separando em pastas os objetos e diminuir o codigo no <i>main.py</i>.</li>
   <li>Importar o <i>Swagger</i> para um arquivo proprio e melhor documentado.</i></li>
 </ol>
+
+
+# Comentarios do autor:
+
+<img src="https://user-images.githubusercontent.com/60034475/111407884-28666800-86b3-11eb-9312-914bb1a62104.jpg">
+
+<p>Morte ao JavaScript</p>
+<img src="https://user-images.githubusercontent.com/60034475/111408660-5d26ef00-86b4-11eb-9ea2-f38bee50bbff.jpg">
