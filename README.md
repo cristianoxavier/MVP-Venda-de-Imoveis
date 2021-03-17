@@ -1,8 +1,5 @@
 # MVP-Venda-de-Imoveis
-Um projeto MVP realizado como avaliaçao do Campinas Tech Talents da trilha de Python oferecido pela Enforce
-<<<<<<< HEAD
-    
-=======
+Um projeto MVP realizado como avaliaçao do <i>Campinas Tech Talents - 2021</i> da trilha de <i>Python</i> oferecido pela <i>Enforce</i>.
 
 # Como rodar o projeto.
 
@@ -52,4 +49,3 @@ Um projeto MVP realizado como avaliaçao do Campinas Tech Talents da trilha de P
 
 <p>Morte ao JavaScript</p>
 <img src="https://user-images.githubusercontent.com/60034475/111408660-5d26ef00-86b4-11eb-9ea2-f38bee50bbff.jpg">
->>>>>>> 4b23a77cc79760802845bc71196aa69b98beaafd
