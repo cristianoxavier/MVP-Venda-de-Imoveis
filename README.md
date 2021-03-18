@@ -24,28 +24,24 @@ Um projeto MVP realizado como avaliaçao do <i>Campinas Tech Talents - 2021</i> 
 
 
 
-# TODO's
-<ol>
-  <h2><i>Banco de dados</i></h2>
-  <li>Criação da tabela de endereços relacionado ao cliente e proprietario. <i>Um cliente/proprietario pode ter mais de um endereço.</i></li>
-</ol>
+## ⚙️ Known Issues
 
-<ol>
-  <h2><i>FrontEnd</i></h2>
-  <li>Melhorar o design das rotas.</li>
-  <li>Adicionar <i>Compras,</i> <i>Gastos do imovel</i>, <i>Criaçao de Banco</i></li>
-</ol>
-
-<ol>
-  <h2><i>Back-end</i></h2>
-  <li>Melhorar o codigo em si, separando em pastas os objetos e diminuir o codigo no <i>main.py</i>.</li>
-  <li>Importar o <i>Swagger</i> para um arquivo proprio e melhor documentado.</i></li>
-</ol>
+- Sistema CRUD não implementado completamente no Front-End;
+- Criação da tabela de endereços relacionado ao cliente e proprietario. <i>Um cliente/proprietario pode ter mais de um endereço.;
 
 
-# Comentarios do autor:
 
-<img src="https://user-images.githubusercontent.com/60034475/111407884-28666800-86b3-11eb-9312-914bb1a62104.jpg">
+## 🛠️ Construído com
 
-<p>Morte ao JavaScript</p>
-<img src="https://user-images.githubusercontent.com/60034475/111408660-5d26ef00-86b4-11eb-9ea2-f38bee50bbff.jpg">
+* [Angular](https://angular.io/) - O framework web usado.
+* [Bootstrap](https://getbootstrap.com/) - O framework de estilos usado.
+* [SQLAlchemy](https://www.sqlalchemy.org/) - Estruturação do banco de dados.
+* [Flask](https://flask.palletsprojects.com/en/1.1.x/) - Usada para gerar os microsserviços.
+* [PostgreSQL](https://www.postgresql.org/) - Armazenamento dos dados.
+
+
+## ✒️ Autor
+
+* **Cristiano Xavier** - *Responsável por estruturar o banco de dados no Postgre, codificar o backend e desenvolver o Front-End*
+* [GitHub](https://github.com/cristianoxavier) 
+* [Linkedin](https://www.linkedin.com/in/cristiano-xavier-2021/)
